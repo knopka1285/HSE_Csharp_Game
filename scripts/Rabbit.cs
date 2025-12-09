@@ -1,4 +1,5 @@
 using Godot;
+using Godot.NativeInterop;
 using System;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
@@ -17,9 +18,9 @@ public partial class Rabbit : CharacterBody2D
 	
 	[Export] public AnimatedSprite2D RabbitAnim;
 	public override void _Ready()
-	{	
-
-		Area2D _detect = GetNode<Area2D>($"./Detector");
+	{
+        AddToGroup("enemies");
+        Area2D _detect = GetNode<Area2D>($"./Detector");
 		_detect.Connect(Area2D.SignalName.BodyEntered, Callable.From<Node>(OnBodyEntered));
 		Area2D _detect_boom = GetNode<Area2D>($"./Detector_BOOM");
 		_detect_boom.Connect(Area2D.SignalName.BodyEntered, Callable.From<Node>(OnBoomEntered));
@@ -88,6 +89,14 @@ public partial class Rabbit : CharacterBody2D
         _collisionShape.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
         await ToSignal(RabbitAnim, "animation_finished");
 		QueueFree();
+    }
+
+    public void VarDeath(Vector2 coord, float radius)
+    {
+		if (coord.DistanceTo(GlobalPosition) < radius)
+		{
+			this.Death();
+		}
     }
 
 
