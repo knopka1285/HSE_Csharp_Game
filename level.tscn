@@ -132,10 +132,25 @@ tile_map_data = PackedByteArray("AADG/xAAAAAAAAMAAADH/xAAAAABAAMAAADI/xAAAAACAAM
 tile_set = SubResource("TileSet_0b4ue")
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
+visible = false
 position = Vector2(-3, -19)
 
 [node name="Gun" parent="Player" instance=ExtResource("4_0b4ue")]
+visible = false
 position = Vector2(50, 0)
 
 [node name="Rabbit" parent="." instance=ExtResource("3_oi3di")]
-position = Vector2(695, -310)
+visible = false
+position = Vector2(647, -396)
+
+[node name="Rabbit2" parent="." instance=ExtResource("3_oi3di")]
+visible = false
+position = Vector2(-563, -360)
+
+[node name="Rabbit3" parent="." instance=ExtResource("3_oi3di")]
+visible = false
+position = Vector2(43, -423)
+
+[node name="Rabbit4" parent="." instance=ExtResource("3_oi3di")]
+visible = false
+position = Vector2(545, -43)
