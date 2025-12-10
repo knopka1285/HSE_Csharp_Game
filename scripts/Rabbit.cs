@@ -32,6 +32,7 @@ public partial class Rabbit : CharacterBody2D
 		if (isExploiding) return;
 
 		CharacterBody2D _player = GetNode<CharacterBody2D>($"../Player");
+		
 		Vector2 velocity = Velocity;
 
 		Vector2 direction;
